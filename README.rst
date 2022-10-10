@@ -1,9 +1,8 @@
-Template for the Read the Docs tutorial
+Data Science Guide for begineers to intermediate professionals
 =======================================
 
-This GitHub template includes fictional Python library
-with some basic Sphinx docs.
+This GitHub repository includes Python Functions important for doing data analysis and visualization plots.
 
 Read the tutorial here:
 
-https://docs.readthedocs.io/en/stable/tutorial/
+https://data-science-guide.readthedocs.io/en/latest/
