@@ -1,20 +1,25 @@
 Welcome to Divye's documentation!
 ===================================
 
-**Data Science Guide** is a Python learning portal for beginer to intermediate data science enthusiasts who want to apply data science in corporate world projects.
-It pulls data from open source databases to demonstrate how the concepts of machine learning can be applied to business outcomes and offers a simple guide to *understand* how data science can be leveraged by product managers, data analysts, business intelligence engineers, business analysts, consultants and data scientists to solve real world data science problems.
+**Data Science Guide** is a Data Science Application using Python learning portal for beginer to intermediate data science enthusiasts who want to apply data science to real world busiess problems.
 
-Check out the :doc:`usage` section for further information, including
-how to :ref:`installation` the project.
+It pulls data from open source databases and presents the code in functional format to demonstrate how the concepts of machine learning can be applied to business problems and offers a simple guide to understand how data science can be leveraged by product managers, data analysts, business intelligence engineers, business analysts, consultants and data scientists using python.
+
+Check out the :doc:`Usage` section for further information, including how to understand and navigate the document to maximize learning.
 
 .. note::
 
-   This project is under active development.
+   This project is under active development. Please contact the author for any questions or comments.
 
 Contents
 --------
 
 .. toctree::
 
-   usage
-   api
+   Usage
+   Visulizer Pro
+   Classification Algorithms
+   Regression Algorithms
+   Time Series Forecasting Algorithms
+   Business Problems
+   Science Writing Tips
