@@ -11,4 +11,4 @@ Data Science is a very broad (science breath) and deep (science depth) field of 
    machine_learning
    deep_learning
    
-Visit these documents to understand how you can connect science to business problems and implement the solutions in python with little to no programming background. Before, we start applying models and algorithms to a dataset, 60% of the time is devoted to preprocessing and visualizing the data. Check out the :doc: `visualizer` to see what functions you can use to quickly plot some graphs and communicate insights to the business to gain high level idea about the current situation in the business.
+Visit these documents to understand how you can connect science to business problems and implement the solutions in python with little to no programming background. Before, we start applying models and algorithms to a dataset, 60% of the time is devoted to preprocessing and visualizing the data. Check out the :doc:`visualizer` to see what functions you can use to quickly plot some graphs and communicate insights to the business to gain high level idea about the current situation in the business.
