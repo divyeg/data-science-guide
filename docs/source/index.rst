@@ -16,10 +16,10 @@ Contents
 
 .. toctree::
 
-   usage
+   Motivation
+   Classical Learning
+   Machine Learning
+   Deep Learning
    Visulizer Pro
-   Classification Algorithms
-   Regression Algorithms
-   Time Series Forecasting Algorithms
    Business Problems
    Science Writing Tips
