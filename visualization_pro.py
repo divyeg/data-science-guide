@@ -46,4 +46,27 @@ def classification_model_performance_report(y, y_hat, y_hat_proba):
     plt.title(title, fontsize=18)
     
     plt.show();
+    
+def plot_categorical_countplots(column_x1, column_x2, column_x3, column_x4, hue, df, figsize=(12,12)):
+    """
+    Returns 4 categorical countplots
+
+    Params Type: pd.DataFrame, column strings, hue string
+    Returns: 4x1 plot
+    """
+    plt.figure(figsize=figsize)
+    
+    plt.subplot(411)
+    sns.countplot(x = column_x1, hue=hue, data=df)
+    
+    plt.subplot(412)
+    sns.countplot(x = column_x2, hue=hue, data=df)
+    
+    plt.subplot(413)
+    sns.countplot(x = column_x3, hue=hue, data=df)
+    
+    plt.subplot(414)
+    sns.countplot(x = column_x4, hue=hue, data=df)
+    
+    plt.show();
         
