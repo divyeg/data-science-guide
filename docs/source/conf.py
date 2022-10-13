@@ -2,7 +2,7 @@
 
 # -- Project information
 
-project = 'Divye Gupta'
+project = 'data-science-guide'
 copyright = '2022, Divye Gupta'
 author = 'Divye Gupta'
 
