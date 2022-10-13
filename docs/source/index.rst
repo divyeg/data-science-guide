@@ -5,7 +5,7 @@ Welcome to Data Science Guide documentation!
 
 It pulls data from open source databases and presents the code in functional format to demonstrate how the concepts of machine learning can be applied to business problems and offers a simple guide to understand how data science can be leveraged by product managers, data analysts, business intelligence engineers, business analysts, consultants and data scientists using python.
 
-Check out the :doc:`usage` section for further information, including how to understand and navigate the document to maximize learning.
+Check out the :doc:`motivation` section for further information, including how to understand and navigate the document to maximize learning.
 
 .. note::
 
@@ -16,10 +16,10 @@ Contents
 
 .. toctree::
 
-   Motivation
-   Classical Learning
-   Machine Learning
-   Deep Learning
-   Visulizer Pro
-   Business Problems
-   Science Writing Tips
+   motivation
+   classical_learning
+   machine_learning
+   deep_learning
+   visualizer_pro
+   business_problems
+   science_tips
