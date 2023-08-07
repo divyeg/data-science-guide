@@ -25,7 +25,7 @@ class SortingAlgos(object):
 
     def BubbleSort(self, A):
         """
-        This function is used to sort list of arrays using bubble sort sorting algorithm
+        This function is used to sort list using bubble sort sorting algorithm
 
         """
 
@@ -33,5 +33,21 @@ class SortingAlgos(object):
             for j in reversed(range(i + 1, len(A))):
                 if A[j - 1] > A[j]:
                     A[j], A[j - 1] = A[j - 1], A[j]
+
+        return A
+
+    def InsertionSort(self, A):
+        """
+        This function is used to sort list using insertion sort algorithm
+
+        """
+
+        for i in range(len(A)):
+            temp = A[i]
+            j = i - 1
+            while j >= 0 and A[j] > temp:
+                A[j + 1] = A[j]
+                j = j - 1
+            A[j + 1] = temp
 
         return A
