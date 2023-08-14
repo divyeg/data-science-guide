@@ -51,3 +51,41 @@ class SortingAlgos(object):
             A[j + 1] = temp
 
         return A
+
+    def MergeSort(self, A):
+        """
+        This function is used to sort list using merge sort algorithm
+        """
+        if len(A) < 2:
+            return A
+
+        mid = int(len(A) / 2)
+
+        A1 = A[:mid]
+        A2 = A[mid:]
+
+        A1 = self.MergeSort(A1)
+        A2 = self.MergeSort(A2)
+
+        A = A1 + A2
+
+        i = 0
+        j = 0
+        aux = []
+        while i <= len(A1) - 1 and j <= len(A2) - 1:
+            if A1[i] <= A2[j]:
+                aux.append(A[i])
+                i += 1
+            else:
+                aux.append(A2[j])
+                j += 1
+
+        while i <= len(A1) - 1:
+            aux.append(A1[i])
+            i += 1
+
+        while j <= len(A2) - 1:
+            aux.append(A2[j])
+            j += 1
+
+        return aux
