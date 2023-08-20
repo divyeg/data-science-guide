@@ -67,7 +67,9 @@ class SortingAlgos(object):
         A1 = self.MergeSort(A1)
         A2 = self.MergeSort(A2)
 
-        A = A1 + A2
+        A = (
+            A1 + A2
+        )  # merge the two subarrays to create the new array with sorted halves
 
         i = 0
         j = 0
