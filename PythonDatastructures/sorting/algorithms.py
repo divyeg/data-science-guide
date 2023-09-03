@@ -26,6 +26,7 @@ class SortingAlgos(object):
     def BubbleSort(self, A):
         """
         This function is used to sort list using bubble sort sorting algorithm
+        Explanation: We start with last element of the list and move it up if it is less than left element
 
         """
 
