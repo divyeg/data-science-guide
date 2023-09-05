@@ -32,13 +32,14 @@ class TreeAlgos(object):
         """
 
         new_node = self.TreeNode(val)
+        if root is None:
+            return new_node
 
         prev = None
         curr = root
         while curr is not None:
             if val == curr.val:
                 logger.debug("Value already exists")
-
             elif val < curr.value:
                 prev = curr
                 curr = curr.left
@@ -48,7 +49,6 @@ class TreeAlgos(object):
 
         if val < prev.value:
             prev.left = new_node
-
         else:
             prev.right = new_node
 
