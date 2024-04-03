@@ -1,34 +1,27 @@
-from loguru import logger
-import numpy
-
-
-def quicksort(A):
+def calculate_power(a, b):
     """
-    This function is used to sort an array using quick sort algorithm
-
+    Args:
+     a(int64)
+     b(int64)
+    Returns:
+     int32
     """
-    if len(A) <= 1:
-        return A
-    pivot = numpy.random.randint(1, len(A))
-    p1 = 0
-    p2 = len(A) - 1
-    A[pivot], A[p2] = A[p2], A[pivot]
-    pivot = p2
-    p2 = p2 - 1
-    while p1 <= p2:
-        if A[p1] <= A[pivot]:
-            p1 = p1 + 1
-        else:
-            A[p1], A[p2] = A[p2], A[p1]
-            p2 = p2 - 1
+    if b==0:
+        return 1
+    if a==1:
+        return 1
+    if a == 0:
+        return 0
+    
+    result = calculate_power(a, b // 2)
+    result_power = (result*result) % 1000000007
 
-    A[p1], A[pivot] = A[pivot], A[p1]
-    A1 = quicksort(A[:p1])
-    A2 = quicksort(A[p1 + 1 :])
-    A = A1 + [A[p1]] + A2
-
-    return A
+    if b%2 > 0:
+        result_power = (result_power*a) % 1000000007
+        return result_power
+    else:
+        return result_power
 
 
-A = [7, 5, 1, 3, 9]
-print(quicksort(A))
+
+print(calculate_power(100,3))

@@ -8,7 +8,9 @@ class SortingAlgos(object):
 
     def SelectionSort(self, A):
         """
-        This function is used to sort list of arrays using brute force sorting algorithm
+        This function is used to sort list of arrays using brute force sorting algorithm. 
+        Explanation: We search for minimum value in the list and swap it with current element of the list 
+        in iterative fashion 
 
         """
         for i in range(len(A)):
@@ -41,6 +43,7 @@ class SortingAlgos(object):
     def InsertionSort(self, A):
         """
         This function is used to sort list using insertion sort algorithm
+        Explanation: Insert element to middle of two elements, left which is smaller and right which is larger
 
         """
 
@@ -57,6 +60,8 @@ class SortingAlgos(object):
     def MergeSort(self, A):
         """
         This function is used to sort list using merge sort algorithm
+        Explanation: Divide and conquer approach, divide the array in two part and sort each part 
+        to merge them in the end. We use auxillary arrays to store the intermediate results
         """
         if len(A) < 2:
             return A
@@ -78,7 +83,7 @@ class SortingAlgos(object):
         aux = []
         while i <= len(A1) - 1 and j <= len(A2) - 1:
             if A1[i] <= A2[j]:
-                aux.append(A[i])
+                aux.append(A1[i])
                 i += 1
             else:
                 aux.append(A2[j])
@@ -97,7 +102,8 @@ class SortingAlgos(object):
     def quicksort(self, A):
         """
         This function is used to sort an array using quick sort algorithm
-
+        Explanation: We choose randomly a pivot point in the array and two indexes one start of the array and one
+        end of the array. We then sort the array recursively dividing the array with respect to pivot. 
         """
         if len(A) <= 1:
             return A
