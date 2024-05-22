@@ -1,14 +1,48 @@
 import loguru as logger
 
 
+class TreeNode(object):
+    def __init__(self, val):
+        self.val = val
+        self.left = None
+        self.right = None
+
+
 class TreeAlgos(object):
     def __init__(self) -> None:
         pass
 
-    def TreeNode(self, val):
-        self.root = val
-        self.left = None
-        self.right = None
+    def ConstructBinaryTree(self, vals):
+        """
+        This function is used to create a binary tree from list of values
+        """
+        n = len(vals)
+        if n == 0:
+            return None
+
+        root = TreeNode(vals[0])
+        node_stack = [root]
+        i = 1
+
+        while i < n:
+            curr = node_stack.pop(0)
+            if i < n:
+                curr.left = TreeNode(vals[i])
+                node_stack.append(curr.left)
+                i += 1
+            if i < n:
+                curr.right = TreeNode(vals[i])
+                node_stack.append(curr.right)
+                i += 1
+        return root
+
+    def PrintTree(self, root):
+        if root is None:
+            return None
+
+        self.PrintTree(root.left)
+        print(root.val, end=" ")
+        self.PrintTree(root.right)
 
     def BinarySearchTree(self, root, val):
         """
@@ -118,3 +152,88 @@ class TreeAlgos(object):
                     prev.right.value = succ.value
 
         return root
+
+    def MeasureTreeHeight(self, root):
+        """
+        Args:
+        root(BinaryTreeNode_int32)
+        Returns:
+        int32
+        """
+        # level order traversal
+        if root is None:
+            return 0
+        height = 0
+        q = []
+
+        q.append(root)
+
+        while q:
+            height += 1
+
+            for i in range(len(q)):
+                node = q.pop(0)
+                if node.left is not None:
+                    q.append(node.left)
+                if node.right is not None:
+                    q.append(node.right)
+
+        return height
+
+    def CheckIfBST(root):
+        """
+        Args:
+        root(BinaryTreeNode_int32)
+        Returns:
+        bool
+        """
+        # if a tree is BST, then all the elements in inorder traversal should be sorted
+        node = root
+        node_stack = []
+        prev_value = None
+
+        while node or node_stack:
+            while node:
+                node_stack.append(node)
+                node = node.left
+
+            node = node_stack.pop()
+            if prev_value and prev_value > node.value:
+                return False
+
+            prev_value = node.value
+            node = node.right
+        return True
+
+    def PrintAllPaths(root):
+        """
+        Args:
+        root(BinaryTreeNode_int32)
+        Returns:
+        list_list_int32
+        """
+
+        def helper(root, path, path_list):
+            path.append(root.val)
+
+            if root.left is None and root.right is None:
+                path_list.append(path.copy())
+
+            else:
+                if root.left is not None:
+                    helper(root.left, path, path_list)
+
+                if root.right is not None:
+                    helper(root.right, path, path_list)
+            path.pop()
+
+        path = []
+        path_list = []
+        helper(root, path, path_list)
+
+        return path_list
+
+
+tree_object = TreeAlgos()
+val_list = [1, 2, 3, 4, 5, 6, 7]
+root = tree_object.ConstructBinaryTree(val_list)
