@@ -1,3 +1,6 @@
+import random
+import numpy as np
+
 """
 Q1: Suppose you are given K datasets with mean and variance. Write a function that can give 
 mean and variance of the combined datasets
@@ -47,5 +50,65 @@ def CombineDatasets(d):
     return result
 
 
-d = [[0, 1, 10], [2, 4, 20], [1, 1, 15]]
-print(CombineDatasets(d))
+# d = [[0, 1, 10], [2, 4, 20], [1, 1, 15]]
+# print(CombineDatasets(d))
+
+
+"""
+Q2: Let's say you have a biased coin which has probability of showing head as 0.7. Write a function 
+that simulates a fair coin. Calculate the efficiency of this system and how will you improve the 
+efficiency of this system?
+"""
+
+"""
+Solution: In order to covert a biased coin to a fair coin, we will map the multiple coin tosses to 
+fair coin's head and tail. For example, when we toss a biased coin twice, p(H,T) = p(T, H). Hence we 
+can map H,T as H and T,H as T and discount whenever the coin shows HH or TT. 
+"""
+
+
+def CoinToss(p):
+    toss = random.random()
+    if toss <= p:
+        return "H"
+    else:
+        return "T"
+
+
+def SimulateFairCoin(N, p1, p2):
+    """
+    we will use random.random() and classify it as H if it is less than or equal to 0.7 and T if it
+    is greater than 0.7. We will toss this coin twice to get the fair coin.
+    H, H = 0.49
+    H, T = 0.21
+    T, H = 0.21
+    T, T = 0.09
+    """
+    i = 0
+    result = []
+    while i <= N:
+        toss = (CoinToss(p1), CoinToss(p2))
+        if toss == ("H", "T"):
+            result.append("H")
+            i += 1
+        if toss == ("T", "H"):
+            result.append("T")
+            i += 1
+    return result
+
+
+def RunSimulation(N, p1, p2):
+    result = SimulateFairCoin(N, p1, p2)
+    counter = [0] * 2
+    i = 0
+    while i < len(result):
+        if result[i] == "H":
+            counter[0] += 1
+        else:
+            counter[1] += 1
+        i += 1
+    counter = [x / len(result) for x in counter]
+    print(counter)
+
+
+# RunSimulation(1000, 0.7, 0.7)
