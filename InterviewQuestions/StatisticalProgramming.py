@@ -77,12 +77,23 @@ def CoinToss(p):
 
 def SimulateFairCoin(N, p1, p2):
     """
-    we will use random.random() and classify it as H if it is less than or equal to 0.7 and T if it
+    We will use random.random() and classify it as H if it is less than or equal to 0.7 and T if it
     is greater than 0.7. We will toss this coin twice to get the fair coin.
     H, H = 0.49
-    H, T = 0.21
-    T, H = 0.21
+    H, T = 0.21 - Heads
+    T, H = 0.21 - Tails
     T, T = 0.09
+    The efficiency of the system is 42%, we can improve this efficiency by considering H,H and T,T
+    scenarios from two coin toss which basically means instead of throwing aways these cases we couple
+    these cases with HT, HH and TT cases to improve efficiency.
+    H,H H,H = 0.49 * 0.49
+    H,H H,T = 0.49 * 0.21 - Heads
+    H,H T,T = 0.49 * 0.09 - Heads
+    T,T H,T = 0.09 * 0.21 - Heads
+    H,H T,H = 0.49 * 0.21 - Tails
+    T,T H,H = 0.09 * 0.49 - Tails
+    T,T T,H = 0.09 * 0.21 - Tails
+    T,T T,T = 0.09 * 0.09
     """
     i = 0
     result = []
@@ -112,3 +123,39 @@ def RunSimulation(N, p1, p2):
 
 
 # RunSimulation(1000, 0.7, 0.7)
+
+"""
+Q3: Given a base a and an exponent b. Your task is to find a^b. The value could be large enough. 
+So, calculate a^b % 1000000007.
+"""
+
+"""
+Solution: Figure out the edges case and write them first. Edge cases include when b = 0, then return 1, 
+when a = 1, then return 1 and when a = 0, then return 0. if b is odd, then multiply the result by a to 
+account for additional a, else multiply result by itself.
+"""
+
+
+def calculate_power(a, b):
+    """
+    Args:
+     a(int64)
+     b(int64)
+    Returns:
+     int32
+    """
+    if b == 0:
+        return 1
+    if a == 1:
+        return 1
+    if a == 0:
+        return 0
+
+    result = calculate_power(a, b // 2)
+    result_power = (result * result) % 1000000007
+
+    if b % 2 > 0:
+        result_power = (result_power * a) % 1000000007
+        return result_power
+    else:
+        return result_power
