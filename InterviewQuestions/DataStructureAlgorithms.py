@@ -82,9 +82,87 @@ class Solution:
     def twoSum(self, List, target):
         h = {}
         for i, num in enumerate(List):
-            print(i, num)
             n = target - num
             if n not in h:
                 h[num] = i
             else:
                 return (h[n], i)
+
+
+"""
+Q4: An arcade game player wants to climb to the top of the leaderboard and track their ranking. The game 
+uses Dense Ranking, so its leaderboard works like this:
+1. The player with the highest score is ranked number one on the leaderboard.
+2. Players who have equal scores receive the same ranking number, and the next player(s) receive the 
+immediately following ranking number.
+Write a function that takes sequential player scores and return their leaderboard ranking based on the 
+updated ranked list. Ranked list is sorted in descending order and players are sorted in ascending order
+of their scores. Assume players completed the game in their order of scores.
+"""
+
+
+def climbingLeaderboard(ranked, player):
+    # we remove duplicate scores from ranked players as it will not affect the rank of new players
+    rankings = sorted(set(ranked), reverse=True)
+    player_rank = []
+    rank_index = 0
+    player_index = -1
+    minimum = -len(player)
+    try:
+        while player_index >= minimum:
+            if player[player_index] >= rankings[rank_index]:
+                player_rank.append(rank_index + 1)
+                player_index -= 1
+            else:
+                rank_index += 1
+    except IndexError:
+        for i in range(minimum, player_index + 1):
+            player_rank.append(rank_index + 1)
+    return player_rank[::-1]
+
+
+"""
+Q5: Lexicographical order is often known as alphabetical order when dealing with strings. A string is 
+greater than another string if it comes later in a lexicographically sorted list.
+Given a word, create a new word by swapping some or all of its characters. This new word must meet two 
+criteria:
+1. It must be greater than the original word
+2. It must be the smallest word that meets the first condition
+"""
+
+
+def biggerIsGreater(w):
+    # find the latest element that has larger element after
+    n = len(w)
+    mx_sf_idx = n - 1
+    swap_pos_l = None
+
+    for i in range(n - 1, -1, -1):
+        if w[i] < w[mx_sf_idx]:
+            swap_pos_l = i
+            break
+        elif w[i] > w[mx_sf_idx]:
+            mx_sf_idx = i
+
+    # sequence is the largest permutation
+    if swap_pos_l is None:
+        return "no answer"
+
+    # find smallest larger element
+    swap_pos_r = swap_pos_l + 1
+    for i in range(swap_pos_l + 1, n):
+        if w[i] < w[swap_pos_r] and w[i] > w[swap_pos_l]:
+            swap_pos_r = i
+
+    # swap
+    w_arr = list(w)
+    l_tmp = w_arr[swap_pos_l]
+    w_arr[swap_pos_l] = w_arr[swap_pos_r]
+    w_arr[swap_pos_r] = l_tmp
+
+    # sort and build the solution
+    w_arr_l = w_arr[: swap_pos_l + 1]
+    w_arr_r = w_arr[swap_pos_l + 1 :]
+    w_arr_r.sort()
+
+    return "".join(w_arr_l + w_arr_r)
