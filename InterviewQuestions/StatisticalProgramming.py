@@ -159,3 +159,37 @@ def calculate_power(a, b):
         return result_power
     else:
         return result_power
+
+
+"""
+Q4: Write a function to calculate empirical cumulative distribution function given an array and number 
+of bins
+"""
+
+"""
+Solution: We start with sorting the array and finding mix and max values. We then calculate bin_width.
+We then define the left bin value and right bin value for each nums in x taking care of cases where
+right bin value never exceeds the max value of nums in x.
+"""
+
+
+def cumulative_distribution_function(x, bins):
+    x = sorted(x)
+    max_x = max(x)
+    min_x = min(x)
+    bin_width = (max_x - min_x) // bins
+    ecdf = {}
+    for nums in x:
+        bin_number = (nums - min_x) // (bin_width + 1)
+        bin_l = min_x + (bin_number) * (bin_width + 1)
+        if bin_l >= max_x:
+            bin_l = max_x
+        bin_r = bin_l + (bin_width)
+        if bin_r >= max_x:
+            bin_r = max_x
+        bin_name = f"{bin_l} - {bin_r}"
+        if bin_name in ecdf.keys():
+            ecdf[bin_name] += 1
+        else:
+            ecdf[bin_name] = 1
+    return ecdf
