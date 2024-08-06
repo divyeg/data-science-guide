@@ -166,3 +166,100 @@ def biggerIsGreater(w):
     w_arr_r.sort()
 
     return "".join(w_arr_l + w_arr_r)
+
+
+"""
+Q6: Given a list of non-negative integers nums, arrange them such that they form the largest number 
+and return it. For example nums = [10,2], output = "210"
+
+"""
+
+
+def LargestNumber(nums):
+    return (
+        "".join(sorted([str(num) for num in nums], key=lambda x: x * 10, reverse=True))
+        if set(nums) != set([0])
+        else "0"
+    )
+
+
+"""
+Q7: Given two sorted arrays nums1 and nums2 of size m and n respectively, return the median of the 
+two sorted arrays.
+
+"""
+
+
+def findMedianSortedArrays(nums1, nums2):
+    merged_nums = []
+    i = j = 0
+    total_length = len(nums1) + len(nums2)
+
+    while i + j < total_length and i < len(nums1) and j < len(nums2):
+        if nums1[i] < nums2[j]:
+            merged_nums.append(nums1[i])
+            i += 1
+        else:
+            merged_nums.append(nums2[j])
+            j += 1
+    if j <= len(nums2):
+        merged_nums.extend(nums2[j:])
+
+    if i <= len(nums1):
+        merged_nums.extend(nums1[i:])
+
+    if total_length % 2 == 0:
+        median_num = (
+            merged_nums[total_length // 2] + merged_nums[(total_length // 2) - 1]
+        ) / 2
+    else:
+        median_num = merged_nums[total_length // 2]
+    return median_num
+
+
+"""
+Q8:There are two lists of dictionaries representing friendship beginnings and endings: friends_added 
+and friends_removed. Each dictionary contains the user_ids and created_at time of the friendship 
+beginning /ending.
+
+Write a function friendship_timeline to generate an output that lists the pairs of friends with 
+their corresponding timestamps of the friendship beginning and then the timestamp of the friendship 
+ending.
+
+Note: There can be multiple instances over time when two people became friends and unfriended; 
+only output lists when a corresponding friendship was removed.
+
+Example:
+
+Input:
+
+friends_added = [
+    {'user_ids': [1, 2], 'created_at': '2020-01-01'},
+    {'user_ids': [3, 2], 'created_at': '2020-01-02'},
+    {'user_ids': [2, 1], 'created_at': '2020-02-02'},
+    {'user_ids': [4, 1], 'created_at': '2020-02-02'}]
+
+friends_removed = [
+    {'user_ids': [2, 1], 'created_at': '2020-01-03'},
+    {'user_ids': [2, 3], 'created_at': '2020-01-05'},
+    {'user_ids': [1, 2], 'created_at': '2020-02-05'}]
+
+Output:
+
+friendships = [{
+    'user_ids': [1, 2],
+    'start_date': '2020-01-01',
+    'end_date': '2020-01-03'
+  },
+  {
+    'user_ids': [1, 2],
+    'start_date': '2020-02-02',
+    'end_date': '2020-02-05'
+  },
+  {
+    'user_ids': [2, 3],
+    'start_date': '2020-01-02',
+    'end_date': '2020-01-05'
+  },
+]
+"""
