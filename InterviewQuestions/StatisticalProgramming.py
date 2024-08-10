@@ -174,6 +174,9 @@ right bin value never exceeds the max value of nums in x.
 
 
 def cumulative_distribution_function(x, bins):
+    """
+    The function is used to calculate the empirical cumulative distribution function for a data distribution
+    """
     x = sorted(x)
     max_x = max(x)
     min_x = min(x)
