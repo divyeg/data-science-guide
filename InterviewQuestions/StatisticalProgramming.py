@@ -1,5 +1,6 @@
 import random
 import numpy as np
+import matplotlib.pyplot as plt
 
 """
 Q1: Suppose you are given K datasets with mean and variance. Write a function that can give 
@@ -196,3 +197,36 @@ def cumulative_distribution_function(x, bins):
         else:
             ecdf[bin_name] = 1
     return ecdf
+
+
+"""
+Q5: Write a function in python that samples 1000 data points from a normal distribution and plot them on a histogram.
+"""
+
+"""
+Solution: We use numpy package random.normal function and sample 1000 data points using mean=0 and standard deviation=1
+We then use matplotlib libraries hist function to plot the histogram.
+"""
+
+
+def generate_and_plot_normal_distribution(N, mean=0, std_dev=1):
+    """Generates N samples from a normal distribution and plots a histogram.
+
+    Args:
+      N: Number of samples to generate.
+      mean: Mean of the normal distribution.
+      std_dev: Standard deviation of the normal distribution.
+    """
+
+    # Generate N random samples from a normal distribution
+    samples = np.random.normal(loc=mean, scale=std_dev, size=N)
+
+    # Plot the histogram
+    plt.hist(samples, bins=30, density=True, alpha=0.6, color="g")
+
+    # Add labels and title
+    plt.xlabel("Value")
+    plt.ylabel("Probability Density")
+    plt.title(f"Histogram of {N} Samples from Normal Distribution")
+
+    plt.show()
