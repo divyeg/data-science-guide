@@ -57,7 +57,7 @@ def CombineDatasets(d):
 
 """
 Q2: Let's say you have a biased coin which has probability of showing head as 0.7. Write a function 
-that simulates a fair coin. Calculate the efficiency of this system and how will you improve the 
+that simulates a fair coin. Calculate the efficiency of this system and suggest how will you improve the 
 efficiency of this system?
 """
 
